@@ -63,7 +63,9 @@ class CssFormatCommand(sublime_plugin.TextCommand):
 		view = self.view
 		file_name = view.file_name()
 		syntax_path = view.settings().get('syntax')
-		suffix_array = ['css', 'sass', 'scss', 'less', 'html', 'htm']
+		#suffix_array = ['css', 'sass', 'scss', 'less', 'html', 'htm']
+		global_settings = sublime.load_settings('CSS Format.sublime-settings')
+		suffix_array = view.settings().get('format_on_save_filter', global_settings.get('format_on_save_filter', '\.(css|sass|scss|less)$'))
 		suffix = ''
 		syntax = ''
 		
